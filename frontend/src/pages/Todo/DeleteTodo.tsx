@@ -10,12 +10,13 @@ export const DeleteTodo = ({ task }: any) => {
   const handleShow = () => setShow(!show);
 
   const handleDelete = async () => {
-    const res = await axiosInstance.delete(`/tasks/${task._id}`);
-    toast.success("Task Deleted successfully !", {
-      position: toast.POSITION.TOP_RIGHT,
-    });
-
-    handleShow();
+    try {
+      await axiosInstance.delete(`/tasks/${task._id}`);
+      toast.success("Task Deleted successfully !");
+      handleShow();
+    } catch (error: any) {
+      toast.error(error?.response?.data?.error);
+    }
   };
 
   return (
@@ -37,16 +38,16 @@ export const DeleteTodo = ({ task }: any) => {
         centered
       >
         <Modal.Header closeButton>
-        <Modal.Title>{task.title}</Modal.Title>
+          <Modal.Title>{task.title}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-         Are You sure want to delete the task?
-        </Modal.Body>
+        <Modal.Body>Are You sure want to delete the task?</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleShow}>
             Cancel
           </Button>
-          <Button variant="danger" onClick={handleDelete}>Delete</Button>
+          <Button variant="danger" onClick={handleDelete}>
+            Delete
+          </Button>
         </Modal.Footer>
       </Modal>
     </Fragment>

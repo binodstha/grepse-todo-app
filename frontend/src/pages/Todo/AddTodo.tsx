@@ -8,13 +8,12 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { taskSchema } from "../../shared/schema";
 
 export const AddTodo: React.FC = () => {
-
   const { user } = useAuth0();
   const [show, setShow] = useState<boolean>(false);
   const handleShow = () => setShow(!show);
 
   const initialValues: TodoFormValues = {
-    userId:user?.sub ?? "",
+    userId: user?.sub ?? "",
     title: "",
     description: "",
     completed: false,
@@ -24,13 +23,14 @@ export const AddTodo: React.FC = () => {
     values: TodoFormValues,
     { setSubmitting }: FormikHelpers<TodoFormValues>
   ) => {
-    const res = await axiosInstance.post("/tasks", values);
-    toast.success("New Task Created successfully !", {
-      position: toast.POSITION.TOP_RIGHT,
-    });
-    setSubmitting(false);
-    handleShow();
-
+    try {
+      await axiosInstance.post("/tasks", values);
+      toast.success("New Task Created successfully !");
+      setSubmitting(false);
+      handleShow();
+    } catch (error: any) {
+      toast.error(error?.response?.data?.error);
+    }
   };
   return (
     <>

@@ -26,7 +26,7 @@ tasksRouter.post("/", async (req, res) => {
 // Get tasks with pagination
 tasksRouter.get("/", async (req, res) => {
   const page = parseInt(req.query.page) || 1; // Default to page 1 if not provided
-  const limit = parseInt(req.query.limit) || 10; // Default to 10 items per page
+  const limit = parseInt(req.query.limit) || 5; // Default to 10 items per page
   const userId = req.query.userId;
   const type = req.query.type;
   const sort = req.query.sort;
@@ -85,7 +85,6 @@ tasksRouter.get("/:id", async (req, res) => {
 // Update a task by ID
 tasksRouter.put("/:id", async (req, res) => {
   const taskId = req.params.id;
-  const { title, description, completed, dueDate } = req.body;
   const updateData = req.body;
   if (updateData.dueDate)
   updateData.dueDate = updateData.dueDate ? new Date(updateData.dueDate) : null;

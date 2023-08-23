@@ -14,10 +14,7 @@ export const TodoPagination: React.FC<TodoPaginationProps> = ({
             disabled={currentPage === 1}
             onClick={() => setCurrentPage(currentPage - 1)}
           />
-
           {[...Array(totalPages)].map((x, i) => (
-            <>
-              {console.log(i)}
               <Pagination.Item
                 key={`item-pagination-${i}`}
                 active={currentPage === i + 1}
@@ -25,9 +22,7 @@ export const TodoPagination: React.FC<TodoPaginationProps> = ({
               >
                 {i + 1}
               </Pagination.Item>
-            </>
           ))}
-
           <Pagination.Next
             disabled={currentPage === totalPages}
             onClick={() => setCurrentPage(currentPage + 1)}

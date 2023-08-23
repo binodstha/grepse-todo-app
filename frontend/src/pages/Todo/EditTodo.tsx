@@ -22,12 +22,15 @@ export const EditTodo = ({ task }: any) => {
     values: TodoFormValues,
     { setSubmitting }: FormikHelpers<TodoFormValues>
   ) => {
-    const res = await axiosInstance.put(`/tasks/${task._id}`, values);
-    toast.success("Task Updated successfully !", {
-      position: toast.POSITION.TOP_RIGHT,
-    });
-    setSubmitting(false);
-    handleShow();
+    try {
+      await axiosInstance.put(`/tasks/${task._id}`, values);
+      toast.success("Task Updated successfully !");
+      setSubmitting(false);
+      handleShow();
+    } catch (error: any) {
+      toast.error(error?.response?.data?.error)
+    }
+
   };
 
   return (

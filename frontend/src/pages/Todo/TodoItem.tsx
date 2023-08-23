@@ -8,17 +8,15 @@ import { DeleteTodo } from "./DeleteTodo";
 import axiosInstance from "../../shared/axios-instance";
 
 export const TodoItem = ({ task }: any) => {
-  const handleTaskCheck = async (
-    id: string
-  ) => {
-    const res = await axiosInstance.put(`/tasks/${task._id}`, {completed: true});
-    if (res.status === 200) {
-    task = res.data
-      toast.success("Task Marked Completed  !", {
-      position: toast.POSITION.TOP_RIGHT,
-    });
-  }
-
+  const handleTaskCheck = async (id: string) => {
+    try {
+      await axiosInstance.put(`/tasks/${task._id}`, {
+        completed: true,
+      });
+      toast.success("Task Marked Completed  !");
+    } catch (error: any) {
+      toast.error(error?.response?.data?.error);
+    }
   };
   return (
     <Row className={`px-3 align-items-center todo-item  rounded`}>
@@ -31,13 +29,12 @@ export const TodoItem = ({ task }: any) => {
               title="Mark as todo"
             />
           ) : (
-            <BsSquare 
+            <BsSquare
               className="text-primary btn m-0 p-0"
               data-toggle="tooltip"
               data-placement="bottom"
               title="Mark as complete"
               onClick={() => handleTaskCheck(task?._id)}
-
             />
           )}
         </h2>
@@ -61,16 +58,17 @@ export const TodoItem = ({ task }: any) => {
                 title=""
                 data-original-title="Due on date"
               />
-              <h6 className="text my-2 pr-2">{new Date(task?.dueDate).toISOString().split("T")[0]}</h6>
+              <h6 className="text my-2 pr-2">
+                {new Date(task?.dueDate).toISOString().split("T")[0]}
+              </h6>
             </div>
           </div>
         )}
       </Col>
       <Col sm="auto" className="m-1 p-0 todo-actions">
         <div className="d-flex align-items-center justify-content-end">
-          <EditTodo task={task}/>
-          {!task?.completed && 
-          <DeleteTodo task={task}/>}
+          <EditTodo task={task} />
+          {!task?.completed && <DeleteTodo task={task} />}
         </div>
         <div className="row todo-created-info">
           <div className="col-auto d-flex align-items-center pr-2">

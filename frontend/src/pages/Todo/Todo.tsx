@@ -84,6 +84,8 @@ export const Todo = () => {
         </Col>
       </Row>
       <Row className="mx-1 px-5 pb-3 w-80">
+
+        {tasksData?.tasks.length !== 0?
         <Col className="mx-auto">
           {tasksData?.tasks.map((task: any) => (
             <TodoItem
@@ -94,7 +96,11 @@ export const Todo = () => {
               isEditing={false}
             />
           ))}
-        </Col>
+        </Col>:
+          <Col className="mx-auto">
+            DO not have todo tasks
+        </Col>}
+
       </Row>
       {tasksData?.totalPages > 1 && (
         <TodoPagination

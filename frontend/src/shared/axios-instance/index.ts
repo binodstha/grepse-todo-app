@@ -50,6 +50,7 @@ axiosInstance.interceptors.response.use(
     } else if (responseStatus === 403) {
       window.location.href = '/403';
     }
+    // console.log(Promise.reject(error))
     return Promise.reject(error);
   },
 );
