@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { Dropdown } from "react-bootstrap";
 import { TodoFilterDropdown, TodoFilterItem } from "src/shared/interface";
+import './todo.styles.scss';
 
 export const FilterDropdown: React.FC<TodoFilterDropdown> = ({
   label,
@@ -18,7 +19,7 @@ export const FilterDropdown: React.FC<TodoFilterDropdown> = ({
     <Fragment>
       <label className="text-secondary my-2 pr-2 view-opt-label">{label}</label>
       <Dropdown onSelect={handleDropdownSelect} >
-        <Dropdown.Toggle variant="custom-select-sm btn my-2" id="sort-dropdown">
+        <Dropdown.Toggle variant="custom-select-sm btn my-2" id="sort-dropdown" className="filter-dropdown">
           {activeValue?.label}
         </Dropdown.Toggle>
         <Dropdown.Menu>

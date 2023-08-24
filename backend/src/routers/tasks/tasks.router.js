@@ -2,8 +2,11 @@ const express = require("express");
 const Task = require("../../models/task");
 const tasksRouter = express.Router();
 
+const { validateAccessToken } = require("../../middleware/auth0.middleware");
+
 // Create a new task
 tasksRouter.post("/", async (req, res) => {
+
   const { userId, title, description, completed, dueDate } = req.body;
   try {
     const newTask = new Task({
@@ -25,6 +28,8 @@ tasksRouter.post("/", async (req, res) => {
 
 // Get tasks with pagination
 tasksRouter.get("/", async (req, res) => {
+
+  console.log("req.headers", req.headers)
   const page = parseInt(req.query.page) || 1; // Default to page 1 if not provided
   const limit = parseInt(req.query.limit) || 5; // Default to 10 items per page
   const userId = req.query.userId;

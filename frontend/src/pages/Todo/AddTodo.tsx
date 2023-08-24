@@ -7,7 +7,11 @@ import axiosInstance from "../../shared/axios-instance";
 import { useAuth0 } from "@auth0/auth0-react";
 import { taskSchema } from "../../shared/schema";
 
-export const AddTodo: React.FC = () => {
+interface AddTodoProps{
+  refreshData: any
+}
+
+export const AddTodo: React.FC<AddTodoProps> = ({refreshData}) => {
   const { user } = useAuth0();
   const [show, setShow] = useState<boolean>(false);
   const handleShow = () => setShow(!show);
@@ -28,6 +32,7 @@ export const AddTodo: React.FC = () => {
       toast.success("New Task Created successfully !");
       setSubmitting(false);
       handleShow();
+      refreshData();
     } catch (error: any) {
       toast.error(error?.response?.data?.error);
     }

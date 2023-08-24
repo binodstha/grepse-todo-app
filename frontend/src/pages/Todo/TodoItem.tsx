@@ -7,13 +7,14 @@ import { EditTodo } from "./EditTodo";
 import { DeleteTodo } from "./DeleteTodo";
 import axiosInstance from "../../shared/axios-instance";
 
-export const TodoItem = ({ task }: any) => {
+export const TodoItem = ({ task, refreshData }: any) => {
   const handleTaskCheck = async (id: string) => {
     try {
       await axiosInstance.put(`/tasks/${task._id}`, {
         completed: true,
       });
       toast.success("Task Marked Completed  !");
+      refreshData();
     } catch (error: any) {
       toast.error(error?.response?.data?.error);
     }
@@ -67,8 +68,8 @@ export const TodoItem = ({ task }: any) => {
       </Col>
       <Col sm="auto" className="m-1 p-0 todo-actions">
         <div className="d-flex align-items-center justify-content-end">
-          <EditTodo task={task} />
-          {!task?.completed && <DeleteTodo task={task} />}
+          <EditTodo task={task} refreshData={refreshData} />
+          {!task?.completed && <DeleteTodo task={task} refreshData={refreshData}/>}
         </div>
         <div className="row todo-created-info">
           <div className="col-auto d-flex align-items-center pr-2">

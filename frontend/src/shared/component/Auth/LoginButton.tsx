@@ -11,6 +11,7 @@ export const LoginButton: React.FC = () => {
       },
       authorizationParams: {
         prompt: "login",
+        scope: 'openid profile',
       },
     });
   };

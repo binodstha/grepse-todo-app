@@ -7,7 +7,7 @@ import axiosInstance from "../../shared/axios-instance";
 import { taskSchema } from "../../shared/schema";
 import { FaPencilAlt } from "react-icons/fa";
 
-export const EditTodo = ({ task }: any) => {
+export const EditTodo = ({ task, refreshData }: any) => {
   const [show, setShow] = useState<boolean>(false);
   const handleShow = () => setShow(!show);
 
@@ -27,10 +27,10 @@ export const EditTodo = ({ task }: any) => {
       toast.success("Task Updated successfully !");
       setSubmitting(false);
       handleShow();
+      refreshData();
     } catch (error: any) {
       toast.error(error?.response?.data?.error)
     }
-
   };
 
   return (

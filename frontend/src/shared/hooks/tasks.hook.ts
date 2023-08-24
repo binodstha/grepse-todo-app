@@ -16,7 +16,8 @@ export const useTasks = (
   userId: string | undefined,
   currentPage: number,
   type: string,
-  sort: string
+  sort: string, 
+  dataRefresh: boolean
 ) => {
   const [tasksData, setTasksData] = useState<any>();
   const getTaskData = (
@@ -32,7 +33,8 @@ export const useTasks = (
 
   useEffect(() => {
     getTaskData(userId, currentPage, type, sort);
-  }, [userId, currentPage, type, sort]);
+  }, [userId, currentPage, type, sort, dataRefresh]);
+
   return { tasksData };
 };
 

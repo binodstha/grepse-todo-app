@@ -3,10 +3,10 @@ const dotenv = require("dotenv");
 const express = require("express");
 const helmet = require("helmet");
 const nocache = require("nocache");
-const { messagesRouter } = require("./routers/messages/messages.router");
 const {tasksRouter} = require("./routers/tasks/tasks.router");
 const { errorHandler } = require("./middleware/error.middleware");
 const { notFoundHandler } = require("./middleware/not-found.middleware");
+const {jwtCheck} = require("./middleware/auth0.middleware")
 
 dotenv.config();
 
@@ -58,8 +58,9 @@ app.use(
   })
 );
 
+
+// app.use(jwtCheck)
 app.use("/api/v1", apiRouter);
-apiRouter.use("/messages", messagesRouter);
 apiRouter.use("/tasks", tasksRouter);
 
 app.use(errorHandler);

@@ -5,7 +5,7 @@ import axiosInstance from "../../shared/axios-instance";
 import Modal from "react-bootstrap/Modal";
 import { FaTrash } from "react-icons/fa";
 
-export const DeleteTodo = ({ task }: any) => {
+export const DeleteTodo = ({ task, refreshData }: any) => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(!show);
 
@@ -14,6 +14,7 @@ export const DeleteTodo = ({ task }: any) => {
       await axiosInstance.delete(`/tasks/${task._id}`);
       toast.success("Task Deleted successfully !");
       handleShow();
+      refreshData();
     } catch (error: any) {
       toast.error(error?.response?.data?.error);
     }

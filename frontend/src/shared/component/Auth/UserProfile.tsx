@@ -1,19 +1,15 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Card, Col, Container, Row } from "react-bootstrap";
+import { PageLoader } from "../PageLoader";
 import './user-profile.scss'
 
-
-
-
 export const UserProfile: React.FC = ({}) => {
-
-
   const { user , isAuthenticated, isLoading, } = useAuth0();
   if (isLoading) {
-    return <div>Loading ...</div>;
+    return <PageLoader/>;
   }
-  
+
   if (!isAuthenticated || !user) {
     return <div>User not authenticated.</div>;
   }
@@ -35,11 +31,6 @@ export const UserProfile: React.FC = ({}) => {
                   </div>
                 </div>
               </Card.Body>
-            </Card>
-            <Card className="mt-3">
-              <ul className="list-group list-group-flush">
-                {/* List items here */}
-              </ul>
             </Card>
           </Col>
           <Col md={8}>

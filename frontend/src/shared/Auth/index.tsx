@@ -14,6 +14,9 @@ export const AuthProvider = ({
   const domain = process.env.REACT_APP_AUTH0_DOMAIN;
   const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
   const redirectUri = process.env.REACT_APP_AUTH0_CALLBACK_URL;
+  const audience = process.env.REACT_APP_AUTH0_AUDIENCE;
+  const scope = "read:todo, write:todo, openid profile";
+  const responseType = "code";
 
   const onRedirectCallback = (appState?: AppState) => {
     navigate(appState?.returnTo || window.location.pathname);
@@ -28,6 +31,9 @@ export const AuthProvider = ({
       domain={domain}
       clientId={clientId}
       authorizationParams={{
+        audience: audience,
+        scope: scope,
+        response_type: responseType,
         redirect_uri: redirectUri,
       }}
       onRedirectCallback={onRedirectCallback}
