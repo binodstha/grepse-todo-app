@@ -1,11 +1,12 @@
 import React from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav, Container, Image } from "react-bootstrap";
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton, LogoutButton, SignupButton } from "../Auth";
 import { Link } from "react-router-dom";
-import './header.styles.scss';
+import "./header.styles.scss";
+import Logo from "../../../assets/images/logo.png";
 
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 export const Header: React.FC = () => {
   const { isAuthenticated, isLoading } = useAuth0();
   const location = useLocation();
@@ -13,8 +14,9 @@ export const Header: React.FC = () => {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Link to="/" className="navbar-brand text-primary fw-bold">
-          Grepsr Todos App
+        <Link to="/" className="navbar-brand text-primary fw-bold item-banner">
+          <Image src={Logo} alt="Logo" className="img-fluid" />
+          Grepsr Task Management
         </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse
@@ -24,24 +26,36 @@ export const Header: React.FC = () => {
           <Nav className="d-flex path-link">
             {isAuthenticated && (
               <>
-                <Link to="/todo" className={`nav-link ${location.pathname === "/todo" && "fw-bold"} `}>
+                <Link
+                  to="/todo"
+                  className={`nav-link ${
+                    location.pathname === "/todo" && "fw-bold"
+                  } `}
+                >
                   Tasks
                 </Link>
-                <Link to="/profile" className={`nav-link ${location.pathname === "/profile" &&  "fw-bold"} `}>
+                <Link
+                  to="/profile"
+                  className={`nav-link ${
+                    location.pathname === "/profile" && "fw-bold"
+                  } `}
+                >
                   Profile
                 </Link>
               </>
             )}
           </Nav>
-          {!isLoading && <div className="nav-bar__buttons">
-            {!isAuthenticated && (
-              <>
-                <SignupButton />
-                <LoginButton />
-              </>
-            )}
-            {isAuthenticated && <LogoutButton />}
-          </div>}
+          {!isLoading && (
+            <div className="nav-bar__buttons">
+              {!isAuthenticated && (
+                <>
+                  <SignupButton />
+                  <LoginButton />
+                </>
+              )}
+              {isAuthenticated && <LogoutButton />}
+            </div>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>

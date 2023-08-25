@@ -6,10 +6,10 @@ export const Dashboard = () => {
     <Container className="m-5 p-2 rounded mx-auto bg-light shadow">
       <Row className="mx-1 px-5 pb-3 w-80 dashboard-item">
         <Col className="h3 d-flex justify-content-center text-primary title">
-          Welcome to &nbsp;<span className="fw-bold">Grepsr Todos App</span>!
+          Welcome to &nbsp;<span className="fw-bold">Grepsr Task Management App</span>!
         </Col>
         <Col className="p text">
-          Hello and welcome aboard to our powerful ToDo app! We're excited to
+          Hello and welcome aboard to our powerful <strong>Grepsr Task Management App</strong>! We're excited to
           have you join us on this journey towards better organization and
           increased productivity.
         </Col>

@@ -7,7 +7,8 @@ const getData = async (url: string, setAction: any) => {
     if (res.status === 200) {
       setAction(res.data);
     }
-  } catch (error) {
+  } catch (error:any) {
+    console.log(error)
     return {};
   }
 };

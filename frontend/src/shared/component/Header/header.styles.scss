@@ -4,3 +4,16 @@
     margin-bottom: 100px;
   }
 }
+
+
+.item-banner {
+  font-size: 20px;
+    display: flex;
+    align-items: inherit;
+    img {
+      height: 30px;
+      width: auto;
+      margin-right: 8px;
+
+    }
+}
