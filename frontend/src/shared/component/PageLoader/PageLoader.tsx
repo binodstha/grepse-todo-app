@@ -1,12 +1,15 @@
 import React from "react";
-import './loader.scss';
+import "./loader.scss";
+import loadingImg from '../../../assets/images/loader.svg'
 
 export const PageLoader: React.FC = () => {
-  const loadingImg = "https://cdn.auth0.com/blog/hello-auth0/loader.svg";
+
 
   return (
-    <div className="loader">
-      <img src={loadingImg} alt="Loading..." />
+    <div className="d-flex container-loader">
+      <div className="loader">
+        <img src={loadingImg} alt="Loading..." />
+      </div>
     </div>
   );
 };

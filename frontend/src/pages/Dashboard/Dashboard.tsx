@@ -1,5 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap";
 import "./dashboard.styles.scss";
+import { PageLoader } from "../../shared/component/PageLoader";
 
 export const Dashboard = () => {
   return (
@@ -20,16 +21,6 @@ export const Dashboard = () => {
           here to help you take control of your day and make the most out of
           your time
         </Col>
-      </Row>
-
-      <Row className="mx-1 px-5 pb-3 w-80 dashboard-item">
-        <Col className="h3 d-flex justify-content-center text-primary title">
-       
-        </Col>
-        <Col className="p text">
-
-        </Col>
-
       </Row>
     </Container>
   );

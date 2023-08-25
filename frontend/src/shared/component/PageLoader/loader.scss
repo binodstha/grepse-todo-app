@@ -1,8 +1,13 @@
-.loader {
+.container-loader {
+  height: 80vh;
+  .loader {
     height: 5rem;
     width: 5rem;
     margin: auto;
     animation: spin 2s infinite linear;
+    img {
+      height: 80px;
+    }
   }
   
   @keyframes spin {
@@ -13,4 +18,6 @@
       transform: rotate(360deg);
     }
   }
+}
+
   
