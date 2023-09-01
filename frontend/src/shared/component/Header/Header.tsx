@@ -4,9 +4,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton, LogoutButton, SignupButton } from "../Auth";
 import { Link } from "react-router-dom";
 import "./header.styles.scss";
-import Logo from "../../../assets/images/logo.png";
-
+import Logo from "assets/images/logo.png";
 import { useLocation } from "react-router-dom";
+
+
 export const Header: React.FC = () => {
   const { isAuthenticated, isLoading } = useAuth0();
   const location = useLocation();

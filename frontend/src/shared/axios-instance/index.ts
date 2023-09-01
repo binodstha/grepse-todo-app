@@ -1,6 +1,7 @@
 import axios from 'axios';
-import { CookieKeys } from '../enum';
+// import { CookieKeys } from '../enum';
 import cookies from 'js-cookie';
+import { CookieKeys } from 'shared/enum';
 
 const baseURL = process.env.REACT_APP_API_BASE_URI;
 const axiosInstance = axios.create({

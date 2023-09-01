@@ -1,5 +1,5 @@
 import { Row, Col, Pagination } from "react-bootstrap";
-import { TodoPaginationProps } from "src/shared/interface";
+import { TodoPaginationProps } from "shared/interface";
 
 export const TodoPagination: React.FC<TodoPaginationProps> = ({
   currentPage,

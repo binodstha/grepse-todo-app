@@ -1,6 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap";
 import "./dashboard.styles.scss";
-import { PageLoader } from "../../shared/component/PageLoader";
+import { PageLoader } from "shared/component/PageLoader";
+
 
 export const Dashboard = () => {
   return (
@@ -21,6 +22,7 @@ export const Dashboard = () => {
           here to help you take control of your day and make the most out of
           your time
         </Col>
+        <PageLoader/>
       </Row>
     </Container>
   );

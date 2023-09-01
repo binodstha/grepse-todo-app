@@ -2,9 +2,9 @@ import { Fragment, useState } from "react";
 import { Row, Col, Form, Button, Modal } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { Formik, Field, FormikHelpers } from "formik";
-import { TodoFormValues } from "src/shared/interface";
-import axiosInstance from "../../shared/axios-instance";
-import { taskSchema } from "../../shared/schema";
+import { TodoFormValues } from "shared/interface";
+import axiosInstance from "shared/axios-instance";
+import { taskSchema } from "shared/schema";
 import { FaPencilAlt } from "react-icons/fa";
 
 export const EditTodo = ({ task, refreshData }: any) => {

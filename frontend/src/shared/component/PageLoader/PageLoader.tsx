@@ -1,6 +1,6 @@
 import React from "react";
 import "./loader.scss";
-import loadingImg from '../../../assets/images/loader.svg'
+import loadingImg from 'assets/images/loader.svg'
 
 export const PageLoader: React.FC = () => {
 

@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { Dropdown } from "react-bootstrap";
-import { TodoFilterDropdown, TodoFilterItem } from "src/shared/interface";
+import { TodoFilterDropdown, TodoFilterItem } from "shared/interface";
 import './todo.styles.scss';
 
 export const FilterDropdown: React.FC<TodoFilterDropdown> = ({

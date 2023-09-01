@@ -1,7 +1,7 @@
 import { Fragment, useState } from "react";
 import Button from "react-bootstrap/Button";
 import { toast } from "react-toastify";
-import axiosInstance from "../../shared/axios-instance";
+import axiosInstance from "shared/axios-instance";
 import Modal from "react-bootstrap/Modal";
 import { FaTrash } from "react-icons/fa";
 

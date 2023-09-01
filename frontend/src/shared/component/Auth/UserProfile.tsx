@@ -72,12 +72,8 @@ export const UserProfile: React.FC = ({}) => {
                   </div>
                 </div>
                 <hr />
-                
               </Card.Body>
             </Card>
-
-           
-
           </Col>
         </Row>
       </div>

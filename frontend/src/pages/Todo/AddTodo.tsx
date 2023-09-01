@@ -2,10 +2,10 @@ import { useState } from "react";
 import { Row, Col, Form, Button, Modal } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { Formik, Field, FormikHelpers } from "formik";
-import { TodoFormValues } from "src/shared/interface";
-import axiosInstance from "../../shared/axios-instance";
+import { TodoFormValues } from "shared/interface";
+import axiosInstance from "shared/axios-instance";
 import { useAuth0 } from "@auth0/auth0-react";
-import { taskSchema } from "../../shared/schema";
+import { taskSchema } from "shared/schema";
 
 interface AddTodoProps{
   refreshData: any

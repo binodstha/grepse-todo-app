@@ -1,14 +1,14 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { FaCheck } from "react-icons/fa";
-import { useTasks } from "../../shared/hooks/tasks.hook";
+import { useTasks } from "shared/hooks/tasks.hook";
 import { TodoItem, FilterDropdown, AddTodo } from ".";
-import { TodoFilterItem } from "src/shared/interface";
+import { TodoFilterItem } from "shared/interface";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 import { TodoPagination } from "./TodoPagination";
 import cookies from "js-cookie";
-import { CookieKeys } from "../../shared/enum/index";
+import { CookieKeys } from "shared/enum/index";
 
 const FILTER_SORT: Array<TodoFilterItem> = [
   { label: "Added Date", value: "added-date", isChecked: true },
